@@ -126,3 +126,8 @@ dmypy.json
 
 .vscode/
 pypi-upload.sh
+
+
+# Added by cargo
+
+/target

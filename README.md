@@ -1,52 +1,53 @@
-# Download-gitignore
+# dgi
 
-A Python CLI program to download .gitignore files from [Github's repository](https://github.com/github/gitignore) easily.
+A Rust CLI to download .gitignore files from [Github's repository](https://github.com/github/gitignore) easily.
 
 ***
 
-# How to Download
+# How to Install
 
-**download-gitignore requires** that you have installed in your machine:
-
-* Python >= 3.5
-* Pip3
-
-Run the following command to **install download-gitignore**:
+Requires a Rust toolchain (`cargo`):
 
 ```console
-pip3 install download-gitignore
+cargo install --git https://github.com/mahadevxo/download-gitignore
 ```
 
 ***
 
 # How to use
 
-### Download .gitignore file
+Run `dgi` with no arguments to show help.
 
-Use the command `download-gitignore download` with the language you want to download the .gitignore file. 
-
-Example:
+### Download a combined .gitignore
 
 ```console
-download-gitignore download python
+dgi --download python c c++
 ```
 
-You can also use `dgi`as an alias for `download-gitignore`:
+Names are case-insensitive. If a `.gitignore` already exists, `dgi` shows a diff and asks whether to **combine** (append, skipping rules you already have), **overwrite**, or **abort** (the default).
+
+### View a template in vim
 
 ```console
-dgi download c++
+dgi --show python
 ```
 
-**New in 2.0.0**: Now you can download more than one gitignore file at the same time:
+### Detect languages in the current codebase
 
 ```console
-download-gitignore download c c++
+dgi --languages
 ```
 
-### List all available .gitignore files
-
-Use the command `download-gitignore list` to list all available .gitignore files to download:
+Files ignored by `.gitignore` (e.g. `node_modules`, `venv`) are skipped. To download a combined .gitignore for the detected languages:
 
 ```console
-download-gitignore list
+dgi --languages --download
+```
+
+You can also add extra languages: `dgi --languages --download terraform`.
+
+### List all available templates
+
+```console
+dgi --list
 ```
